@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# pytest
+.pytest_cache/
+.coverage
+.coverage.*
+
+# Data files — keep .gitkeep, ignore everything else
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Generated reports
+reports/**/*.json
+reports/**/*.md
+
+# Virtual environments
+venv/
+.venv/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Env and logs
+.env
+*.log
+*.jsonl
