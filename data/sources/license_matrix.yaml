@@ -1,0 +1,70 @@
+policy:
+  immutable_raw: true
+  require_source_id: true
+  require_takedown_path_for_tier_b: true
+
+tier_a:
+  description: Default allowed — explicit license permitting NLP research and derived artifact redistribution.
+  licenses:
+    - tag: CC0
+      name: Creative Commons Zero v1.0 Universal
+      allows_training: true
+      allows_redistribution: true
+      requires_attribution: false
+      notes: ""
+    - tag: CC-BY-4.0
+      name: Creative Commons Attribution 4.0 International
+      allows_training: true
+      allows_redistribution: true
+      requires_attribution: true
+      notes: ""
+    - tag: CC-BY-SA-4.0
+      name: Creative Commons Attribution-ShareAlike 4.0 International
+      allows_training: true
+      allows_redistribution: true
+      requires_attribution: true
+      notes: Share-alike applies to derived datasets.
+    - tag: Apache-2.0
+      name: Apache License 2.0
+      allows_training: true
+      allows_redistribution: true
+      requires_attribution: false
+      notes: ""
+    - tag: MIT
+      name: MIT License
+      allows_training: true
+      allows_redistribution: true
+      requires_attribution: false
+      notes: ""
+    - tag: internal
+      name: Internal / Team-Created
+      allows_training: true
+      allows_redistribution: false
+      requires_attribution: false
+      notes: Synthetic or manually verified data created by this project.
+
+tier_b:
+  description: Conditional — API-accessed public text where ToS explicitly allows collection. Must retain source IDs and takedown pathway.
+  licenses:
+    - tag: CC-BY-NC-4.0
+      name: Creative Commons Attribution-NonCommercial 4.0 International
+      allows_training: false
+      allows_redistribution: false
+      requires_attribution: true
+      notes: Non-commercial restriction. Requires legal review before including in public release. Use with caution.
+
+tier_c:
+  description: Disallowed — sources that explicitly deny AI/ML training usage or have unclear terms.
+  licenses:
+    - tag: no-ai-training
+      name: Explicit AI Training Prohibition
+      allows_training: false
+      allows_redistribution: false
+      requires_attribution: false
+      notes: Any source with explicit opt-out of AI/ML training.
+    - tag: unknown
+      name: Unknown or Unclear License
+      allows_training: false
+      allows_redistribution: false
+      requires_attribution: false
+      notes: Reject at ingestion if license cannot be confirmed.
