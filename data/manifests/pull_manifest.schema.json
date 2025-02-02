@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PullManifest",
+    "type": "object",
+    "required": ["run_id", "source_name", "pull_timestamp_utc", "record_count", "output_file", "license_tag"],
+    "properties": {
+        "run_id": { "type": "string" },
+        "source_name": { "type": "string" },
+        "pull_timestamp_utc": { "type": "string", "format": "date-time" },
+        "record_count": { "type": "integer", "minimum": 0 },
+        "output_file": { "type": "string" },
+        "license_tag": {
+            "type": "string",
+            "enum": ["CC0", "CC-BY-4.0", "CC-BY-SA-4.0", "Apache-2.0", "MIT", "internal", "CC-BY-NC-4.0"]
+        },
+        "takedown_contact": { "type": "string" }
+    },
+    "additionalProperties": false
+}
