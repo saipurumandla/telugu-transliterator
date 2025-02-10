@@ -29,6 +29,9 @@ dist/
 build/
 *.egg-info/
 
+# Large dataset archives — never commit these
+downloads/
+
 # Env and logs
 .env
 *.log
