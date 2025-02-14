@@ -19,6 +19,26 @@ sources:
     script_available: true
     notes: Tier B — keep source_doc_id and takedown pathway. Non-commercial only.
 
+  - name: Aksharantar
+    description: AI4Bharat transliteration dataset aggregating IndicCorp, Dakshina, Samanantar, and Wikidata — 2.4M Telugu word pairs
+    tier: A
+    license_tag: CC-BY-4.0
+    source_type: hf_dataset
+    url_or_path: https://huggingface.co/datasets/ai4bharat/Aksharantar/resolve/main/tel.zip
+    lang: te
+    script_available: true
+    notes: Download tel.zip (~69MB). Already aggregates Dakshina, IndicCorp, Samanantar, Wikidata. Use IndicCorp score field for quality filtering.
+
+  - name: Telugu_Wikipedia
+    description: Telugu Wikipedia articles via Wikimedia HuggingFace dataset — sentence-level monolingual Telugu text
+    tier: A
+    license_tag: CC-BY-SA-3.0
+    source_type: hf_dataset
+    url_or_path: https://datasets-server.huggingface.co/rows?dataset=wikimedia%2Fwikipedia&config=20231101.te&split=train
+    lang: te
+    script_available: true
+    notes: Sentence-level data — Roman forms generated in Phase 2 by romanize_rules.py. Pull via datasets-server pagination API.
+
   - name: Synthetic_Internal
     description: Team-generated synthetic Tenglish-Telugu pairs from deterministic romanization rules
     tier: A
