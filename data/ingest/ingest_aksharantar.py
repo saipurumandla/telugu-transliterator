@@ -105,7 +105,8 @@ def main() -> None:
                 if not native or not roman:
                     continue
 
-                doc_id = entry.get("unique_identifier", str(uuid.uuid4()))
+                raw_id = entry.get("unique_identifier", str(uuid.uuid4()))
+                doc_id = f"{split_name}_{raw_id}"
                 source = entry.get("source", "unknown")
                 score = entry.get("score")
 
