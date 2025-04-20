@@ -1,0 +1,20 @@
+You are a Telugu language expert reviewing transliteration quality.
+
+Given a Telugu word/phrase and its Romanized (Tenglish) form, score how well the Roman form represents the Telugu pronunciation.
+
+Telugu: {telugu_text}
+Roman:  {roman_text}
+
+Respond with JSON only, no explanation:
+{
+  "confidence_score": <float 0.0 to 1.0>,
+  "reason_code": "<one of: correct | plausible | colloquial | wrong_phoneme | wrong_word | unrelated>",
+  "flag_for_review": <true or false>
+}
+
+Rules:
+- 0.9-1.0: phonetically accurate, natural transliteration
+- 0.7-0.89: plausible variant, minor spelling difference
+- 0.5-0.69: colloquial shortening, still recognizable
+- 0.0-0.49: wrong phoneme mapping or unrelated word
+- flag_for_review: true if score < 0.5 or if the pair looks like a mismatch

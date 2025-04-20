@@ -1,0 +1,20 @@
+ollama:
+  endpoint: "http://localhost:11434/api/generate"
+  model: "qwen2.5-coder:32b"
+  timeout_seconds: 30
+  fallback_to_rules: true
+
+tasks:
+  score_pair:
+    description: "Score a single Tenglish-Telugu transliteration pair for quality"
+    prompt_file: "mcp/ollama_scoring_prompt.txt"
+    output_fields:
+      - confidence_score    # float 0.0-1.0
+      - reason_code         # short string tag
+      - flag_for_review     # bool
+
+  score_batch:
+    description: "Score a batch of pairs from a review_bucket JSONL file"
+    input: "data/review/*.jsonl"
+    output: "data/review/ollama_scored_*.jsonl"
+    batch_size: 20
