@@ -7,6 +7,7 @@ from datasketch import MinHash, MinHashLSH
 NUM_PERM = 128
 NEAR_DUP_THRESHOLD = 0.85
 SHINGLE_SIZE = 3
+NEAR_DUP_MAX_PAIRS = 200_000   # skip near-dedup for files larger than this
 
 
 def _pair_key(pair: dict) -> str:
@@ -17,7 +18,7 @@ def _pair_key(pair: dict) -> str:
 
 def _make_minhash(text: str) -> MinHash:
     m = MinHash(num_perm=NUM_PERM)
-    tokens = [text[i:i+SHINGLE_SIZE] for i in range(len(text) - SHINGLE_SIZE + 1)]
+    tokens = [text[i:i+SHINGLE_SIZE] for i in range(max(0, len(text) - SHINGLE_SIZE + 1))]
     for token in tokens:
         m.update(token.encode("utf-8"))
     return m
@@ -26,7 +27,7 @@ def _make_minhash(text: str) -> MinHash:
 def dedup_snapshot(input_path: Path, output_path: Path) -> dict:
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Pass 1 — exact dedup
+    # Pass 1 — exact dedup (always, all sizes)
     seen_exact: set[str] = set()
     exact_dupes = 0
     pass1: list[dict] = []
@@ -44,24 +45,25 @@ def dedup_snapshot(input_path: Path, output_path: Path) -> dict:
                 seen_exact.add(key)
                 pass1.append(pair)
 
-    # Pass 2 — near dedup on roman_text using MinHash LSH
-    lsh = MinHashLSH(threshold=NEAR_DUP_THRESHOLD, num_perm=NUM_PERM)
-    kept: list[dict] = []
+    # Pass 2 — near dedup (only for manageable file sizes)
     near_dupes = 0
-
-    for i, pair in enumerate(pass1):
-        roman = (pair.get("roman_text") or "").strip().lower()
-        if len(roman) < SHINGLE_SIZE:
-            kept.append(pair)
-            continue
-
-        m = _make_minhash(roman)
-        candidates = lsh.query(m)
-        if candidates:
-            near_dupes += 1
-        else:
-            lsh.insert(str(i), m)
-            kept.append(pair)
+    if len(pass1) <= NEAR_DUP_MAX_PAIRS:
+        lsh = MinHashLSH(threshold=NEAR_DUP_THRESHOLD, num_perm=NUM_PERM)
+        kept: list[dict] = []
+        for i, pair in enumerate(pass1):
+            roman = (pair.get("roman_text") or "").strip().lower()
+            if len(roman) < SHINGLE_SIZE:
+                kept.append(pair)
+                continue
+            m = _make_minhash(roman)
+            if lsh.query(m):
+                near_dupes += 1
+            else:
+                lsh.insert(str(i), m)
+                kept.append(pair)
+    else:
+        kept = pass1
+        print(f"  Skipping near-dedup for large file ({len(pass1):,} pairs > {NEAR_DUP_MAX_PAIRS:,} limit)")
 
     with output_path.open("w", encoding="utf-8") as f:
         for pair in kept:
