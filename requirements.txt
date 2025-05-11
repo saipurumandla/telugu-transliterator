@@ -8,3 +8,12 @@ regex==2024.4.16
 indic-transliteration==2.3.47
 datasketch==1.6.4
 rapidfuzz==3.6.1
+
+# Phase 3 — training
+transformers==4.40.2
+torch==2.2.2
+datasets==2.18.0
+sentencepiece==0.2.0
+sacrebleu==2.4.2
+jiwer==3.0.4
+accelerate==0.29.3
