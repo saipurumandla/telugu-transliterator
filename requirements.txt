@@ -10,6 +10,7 @@ datasketch==1.6.4
 rapidfuzz==3.6.1
 
 # Phase 3 — training
+numpy==1.26.4
 transformers==4.40.2
 torch==2.2.2
 datasets==2.18.0

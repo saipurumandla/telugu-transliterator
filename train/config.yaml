@@ -27,6 +27,6 @@ training:
   metric_for_best_model: cer
   greater_is_better: false
   logging_steps: 200
-  dataloader_num_workers: 4
+  dataloader_num_workers: 0
   gradient_accumulation_steps: 1
   predict_with_generate: true

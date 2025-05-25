@@ -29,19 +29,13 @@ class TranslitDataset(Dataset):
 
         model_inputs = self.tokenizer(
             roman,
+            text_target=telugu,
             max_length=self.max_input_length,
             padding="max_length",
             truncation=True,
             return_tensors="pt",
         )
-        with self.tokenizer.as_target_tokenizer():
-            labels = self.tokenizer(
-                telugu,
-                max_length=self.max_target_length,
-                padding="max_length",
-                truncation=True,
-                return_tensors="pt",
-            )
+        labels = {"input_ids": model_inputs.pop("labels")}
 
         label_ids = labels["input_ids"].squeeze()
         # Replace padding token id with -100 so it's ignored in loss
