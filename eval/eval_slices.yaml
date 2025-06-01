@@ -1,0 +1,25 @@
+slices:
+  - name: formal
+    description: Clean, formal transliteration pairs from Dakshina lexicon
+    source_names: [dakshina]
+    pair_sources: [direct]
+
+  - name: colloquial
+    description: Augmented colloquial variants — chat-style spellings
+    source_names: [dakshina, aksharantar]
+    pair_sources: [augmented]
+
+  - name: code_mix
+    description: Pairs where roman_text contains English words (code-mixed)
+    filter: roman_has_english_words
+    min_english_word_ratio: 0.2
+
+  - name: long_sentence
+    description: Sentence-level pairs from Wikipedia (longer inputs)
+    source_names: [wikipedia_te]
+    pair_sources: [synthetic]
+    min_roman_length: 30
+
+acceptance_targets:
+  cer_colloquial_max: 0.10   # CER < 10% on colloquial slice for v1.0 release
+  cer_formal_max: 0.05       # CER < 5% on formal slice

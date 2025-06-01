@@ -4,6 +4,8 @@ import random
 import sys
 from pathlib import Path
 
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
 import numpy as np
 import torch
 import yaml
@@ -37,7 +39,6 @@ def compute_cer(pred_texts: list[str], label_texts: list[str]) -> float:
         ref_chars = list(ref)
         pred_chars = list(pred)
         total_chars += len(ref_chars)
-        # Simple character edit distance (Levenshtein)
         m, n = len(ref_chars), len(pred_chars)
         dp = list(range(n + 1))
         for i in range(1, m + 1):
@@ -62,6 +63,12 @@ def train(config_path: str = "train/config.yaml") -> None:
     seed = train_cfg.get("seed", 42)
     set_seed(seed)
 
+    num_gpus = torch.cuda.device_count()
+    print(f"GPUs available: {num_gpus}")
+    for i in range(num_gpus):
+        props = torch.cuda.get_device_properties(i)
+        print(f"  GPU {i}: {torch.cuda.get_device_name(i)}  {props.total_memory // 1024**3}GB")
+
     print(f"Loading tokenizer: {model_cfg['name']}")
     tokenizer = AutoTokenizer.from_pretrained(model_cfg["name"])
 
@@ -83,9 +90,14 @@ def train(config_path: str = "train/config.yaml") -> None:
 
     print(f"Loading model: {model_cfg['name']}")
     model = AutoModelForSeq2SeqLM.from_pretrained(model_cfg["name"])
+    if train_cfg.get("gradient_checkpointing"):
+        model.gradient_checkpointing_enable()
 
     output_dir = train_cfg["output_dir"]
     Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+    use_bf16 = train_cfg.get("bf16", False) and torch.cuda.is_available()
+    use_fp16 = train_cfg.get("fp16", False) and torch.cuda.is_available() and not use_bf16
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=output_dir,
@@ -96,7 +108,9 @@ def train(config_path: str = "train/config.yaml") -> None:
         learning_rate=train_cfg["learning_rate"],
         warmup_steps=train_cfg["warmup_steps"],
         weight_decay=train_cfg["weight_decay"],
-        fp16=train_cfg.get("fp16", False) and torch.cuda.is_available(),
+        fp16=use_fp16,
+        bf16=use_bf16,
+        max_grad_norm=train_cfg.get("max_grad_norm", 1.0),
         evaluation_strategy=train_cfg["evaluation_strategy"],
         eval_steps=train_cfg["eval_steps"],
         save_steps=train_cfg["save_steps"],
@@ -106,6 +120,8 @@ def train(config_path: str = "train/config.yaml") -> None:
         dataloader_num_workers=train_cfg.get("dataloader_num_workers", 0),
         gradient_accumulation_steps=train_cfg.get("gradient_accumulation_steps", 1),
         predict_with_generate=train_cfg.get("predict_with_generate", True),
+        # DDP: required when using gradient checkpointing with encoder-decoder models
+        ddp_find_unused_parameters=False if num_gpus > 1 else None,
         report_to="none",
     )
 
@@ -129,7 +145,7 @@ def train(config_path: str = "train/config.yaml") -> None:
         compute_metrics=compute_metrics,
     )
 
-    print("Starting training ...")
+    print(f"Starting training — bf16={use_bf16}  effective_batch={train_cfg['per_device_train_batch_size'] * max(num_gpus,1)}")
     trainer.train()
 
     best_dir = Path(output_dir) / "best"
