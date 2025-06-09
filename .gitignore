@@ -20,6 +20,13 @@ data/processed/*
 reports/**/*.json
 reports/**/*.md
 
+# Model checkpoints — too large for git
+train/checkpoints/
+
+# Generated manifest files from data pulls
+data/manifests/*.json
+data/manifests/snapshot_index.json
+
 # Virtual environments
 venv/
 .venv/
