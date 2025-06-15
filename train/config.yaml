@@ -23,11 +23,10 @@ training:
   gradient_checkpointing: false
   max_grad_norm: 1.0
   evaluation_strategy: epoch
-  save_strategy: epoch
-  save_total_limit: 3
-  load_best_model_at_end: true
-  metric_for_best_model: cer
-  greater_is_better: false
+  save_strategy: steps
+  save_steps: 60000
+  save_total_limit: 2
+  load_best_model_at_end: false
   logging_steps: 200
   dataloader_num_workers: 0
   gradient_accumulation_steps: 1
