@@ -69,8 +69,11 @@ def train(config_path: str = "train/config.yaml") -> None:
         props = torch.cuda.get_device_properties(i)
         print(f"  GPU {i}: {torch.cuda.get_device_name(i)}  {props.total_memory // 1024**3}GB")
 
+    offline = os.environ.get("TRANSFORMERS_OFFLINE") == "1"
+    load_kwargs = {"local_files_only": True} if offline else {}
+
     print(f"Loading tokenizer: {model_cfg['name']}")
-    tokenizer = AutoTokenizer.from_pretrained(model_cfg["name"])
+    tokenizer = AutoTokenizer.from_pretrained(model_cfg["name"], **load_kwargs)
 
     print("Loading datasets ...")
     train_pairs = load_jsonl(data_cfg["train_file"])
@@ -89,7 +92,7 @@ def train(config_path: str = "train/config.yaml") -> None:
     )
 
     print(f"Loading model: {model_cfg['name']}")
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_cfg["name"])
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_cfg["name"], **load_kwargs)
     if train_cfg.get("gradient_checkpointing"):
         model.gradient_checkpointing_enable()
 
@@ -131,6 +134,9 @@ def train(config_path: str = "train/config.yaml") -> None:
 
     def compute_metrics(eval_pred):
         predictions, labels = eval_pred
+        # ByT5 can generate token IDs outside valid range — clip to actual vocab size
+        # vocab_size returns 256 but len(tokenizer)=384 is the true upper bound
+        predictions = np.clip(predictions, 0, len(tokenizer) - 1)
         decoded_preds = tokenizer.batch_decode(predictions, skip_special_tokens=True)
         labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
@@ -148,12 +154,15 @@ def train(config_path: str = "train/config.yaml") -> None:
     )
 
     print(f"Starting training — bf16={use_bf16}  effective_batch={train_cfg['per_device_train_batch_size'] * max(num_gpus,1)}")
-    trainer.train()
-
     best_dir = Path(output_dir) / "best"
-    trainer.save_model(str(best_dir))
-    tokenizer.save_pretrained(str(best_dir))
-    print(f"Best model saved to {best_dir}")
+    try:
+        trainer.train()
+    except Exception as e:
+        print(f"Training ended with: {e}")
+    finally:
+        trainer.save_model(str(best_dir))
+        tokenizer.save_pretrained(str(best_dir))
+        print(f"Model saved to {best_dir}")
 
 
 if __name__ == "__main__":
