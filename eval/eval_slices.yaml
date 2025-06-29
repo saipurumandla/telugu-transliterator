@@ -9,10 +9,9 @@ slices:
     source_names: [dakshina, aksharantar]
     pair_sources: [augmented]
 
-  - name: code_mix
-    description: Pairs where roman_text contains English words (code-mixed)
-    filter: roman_has_english_words
-    min_english_word_ratio: 0.2
+  # code_mix slice omitted from baseline — training data (Aksharantar/Dakshina/Wikipedia)
+  # contains almost no actual English code-mixed examples (only 12 of 250k test pairs).
+  # A future synthetic augmentation pass will generate targeted code-mixed pairs for v1.1.
 
   - name: long_sentence
     description: Sentence-level pairs from Wikipedia (longer inputs)
