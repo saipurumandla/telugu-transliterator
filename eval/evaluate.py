@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -18,6 +19,11 @@ def _has_english_words(text: str, min_ratio: float = 0.2) -> bool:
         return False
     english = sum(1 for w in words if all(c.isascii() and c.isalpha() for c in w) and len(w) > 1)
     return english / len(words) >= min_ratio
+
+
+def _has_actual_english(text: str, english_words: list[str]) -> bool:
+    words = [w.lower().strip(".,!?") for w in text.split()]
+    return any(w in english_words for w in words)
 
 
 def load_test_pairs(test_file: str) -> list[dict]:
@@ -48,6 +54,10 @@ def filter_slice(pairs: list[dict], slice_cfg: dict) -> list[dict]:
             continue
         if filter_type == "roman_has_english_words":
             if not _has_english_words(roman, min_english_ratio):
+                continue
+        if filter_type == "roman_has_actual_english":
+            english_words = slice_cfg.get("english_words", [])
+            if not _has_actual_english(roman, english_words):
                 continue
         result.append(pair)
     return result
@@ -104,7 +114,7 @@ def evaluate_model(
             outputs = model.generate(
                 **inputs,
                 max_length=max_length,
-                num_beams=4,
+                num_beams=2,
             )
         return tokenizer.batch_decode(outputs, skip_special_tokens=True)
 
@@ -149,6 +159,21 @@ def evaluate_model(
     return results
 
 
+def _find_model_dir(requested: str) -> str:
+    p = Path(requested)
+    if p.exists():
+        return str(p)
+    # Fall back to latest checkpoint directory
+    ckpt_root = Path("train/checkpoints")
+    checkpoints = sorted(ckpt_root.glob("checkpoint-*"),
+                         key=lambda x: int(x.name.split("-")[1]))
+    if checkpoints:
+        fallback = str(checkpoints[-1])
+        print(f"Model dir '{requested}' not found — using {fallback}")
+        return fallback
+    raise FileNotFoundError(f"No model found at '{requested}' and no checkpoints in {ckpt_root}")
+
+
 def main() -> None:
     import argparse
     parser = argparse.ArgumentParser()
@@ -157,10 +182,13 @@ def main() -> None:
     parser.add_argument("--slices-file", default="eval/eval_slices.yaml")
     parser.add_argument("--output", default="reports/benchmarks/eval_results.json")
     parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--gpu", type=int, default=None, help="GPU index to use")
     args = parser.parse_args()
+    if args.gpu is not None:
+        os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
 
     results = evaluate_model(
-        args.model_dir,
+        _find_model_dir(args.model_dir),
         args.test_file,
         args.slices_file,
         args.batch_size,
