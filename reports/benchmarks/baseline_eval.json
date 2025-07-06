@@ -1,0 +1,32 @@
+{
+  "overall": {
+    "count": 250490,
+    "cer": 0.0449,
+    "wer": 0.3614,
+    "exact_match": 0.7883
+  },
+  "formal": {
+    "count": 2177,
+    "cer": 0.0451,
+    "wer": 0.17,
+    "exact_match": 0.83
+  },
+  "colloquial": {
+    "count": 116076,
+    "cer": 0.029,
+    "wer": 0.1772,
+    "exact_match": 0.8228
+  },
+  "code_mix": {
+    "count": 250276,
+    "cer": 0.0448,
+    "wer": 0.3616,
+    "exact_match": 0.7885
+  },
+  "long_sentence": {
+    "count": 3188,
+    "cer": 0.3446,
+    "wer": 0.615,
+    "exact_match": 0.2221
+  }
+}
