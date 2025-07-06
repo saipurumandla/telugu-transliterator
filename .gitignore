@@ -16,9 +16,11 @@ data/interim/*
 data/processed/*
 !data/processed/.gitkeep
 
-# Generated reports
+# Generated reports — intermediate only; committed reports are tracked explicitly
 reports/**/*.json
 reports/**/*.md
+!reports/benchmarks/baseline_report.md
+!reports/benchmarks/baseline_eval.json
 
 # Model checkpoints — too large for git
 train/checkpoints/
