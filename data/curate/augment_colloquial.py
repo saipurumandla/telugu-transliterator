@@ -26,6 +26,22 @@ VARIANT_RULES: list[tuple[str, list[str]]] = [
     # Nasal m/n interchange before consonants
     (r"am([bmp])", [r"an\1"]),
     (r"an([bmp])", [r"am\1"]),
+    # Phase 4 additions — expanded chat patterns from corpus analysis
+    # 'nu' suffix often shortened
+    (r"nu\b", ["n"]),
+    # 'indi' → 'undi' (very common tense marker variation)
+    (r"indi\b", ["undi"]),
+    (r"undi\b", ["indi"]),
+    # 'ante' → 'ante'/'nte' shortening
+    (r"\bante\b", ["nte"]),
+    # Double consonant simplification (mm→m, nn→n, ll→l)
+    (r"([mnl])\1", [r"\1"]),
+    # 'ku' → 'ki' (dative case variation)
+    (r"ku\b", ["ki"]),
+    # 'lo' → 'la' (locative variation)
+    (r"\blo\b", ["la"]),
+    # 'ki' → 'ke' (common in fast speech)
+    (r"\bki\b", ["ke"]),
 ]
 
 _COMPILED = [(re.compile(p), reps) for p, reps in VARIANT_RULES]
