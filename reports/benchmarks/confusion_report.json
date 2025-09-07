@@ -1,0 +1,297 @@
+{
+  "sample_size": 2000,
+  "fail_threshold": 0.2,
+  "failing_count": 133,
+  "failing_rate": 0.0665,
+  "overall_cer": 0.0417,
+  "by_source": {
+    "aksharantar": {
+      "count": 83,
+      "avg_cer": 0.2992
+    },
+    "dakshina": {
+      "count": 2,
+      "avg_cer": 0.4166
+    },
+    "wikipedia_te": {
+      "count": 48,
+      "avg_cer": 0.6033
+    }
+  },
+  "by_length": {
+    "long (30-80)": {
+      "count": 2,
+      "avg_cer": 0.2462
+    },
+    "medium (10-30)": {
+      "count": 20,
+      "avg_cer": 0.2551
+    },
+    "short (<10)": {
+      "count": 65,
+      "avg_cer": 0.3164
+    },
+    "very_long (80+)": {
+      "count": 46,
+      "avg_cer": 0.6188
+    }
+  },
+  "by_pair_source": {
+    "augmented": {
+      "count": 66,
+      "avg_cer": 0.4315
+    },
+    "direct": {
+      "count": 46,
+      "avg_cer": 0.3068
+    },
+    "synthetic": {
+      "count": 21,
+      "avg_cer": 0.5731
+    }
+  },
+  "top_char_errors": [
+    {
+      "pattern": "ట→త",
+      "count": 8
+    },
+    {
+      "pattern": "మ→ం",
+      "count": 8
+    },
+    {
+      "pattern": "ళ→ల",
+      "count": 6
+    },
+    {
+      "pattern": "్→ర",
+      "count": 6
+    },
+    {
+      "pattern": "ల→ా",
+      "count": 5
+    },
+    {
+      "pattern": "ూ→ు",
+      "count": 5
+    },
+    {
+      "pattern": "త→ట",
+      "count": 5
+    },
+    {
+      "pattern": "్→న",
+      "count": 5
+    },
+    {
+      "pattern": "న→ి",
+      "count": 5
+    },
+    {
+      "pattern": "ీ→ి",
+      "count": 4
+    },
+    {
+      "pattern": "ి→న",
+      "count": 4
+    },
+    {
+      "pattern": "ద→డ",
+      "count": 4
+    },
+    {
+      "pattern": "్→ల",
+      "count": 4
+    },
+    {
+      "pattern": "ి→ీ",
+      "count": 4
+    },
+    {
+      "pattern": "ర→ా",
+      "count": 4
+    },
+    {
+      "pattern": "ొ→ో",
+      "count": 4
+    },
+    {
+      "pattern": "ా→న",
+      "count": 4
+    },
+    {
+      "pattern": "్→ట",
+      "count": 3
+    },
+    {
+      "pattern": "ా→ల",
+      "count": 3
+    },
+    {
+      "pattern": "ు→ూ",
+      "count": 3
+    }
+  ],
+  "worst_examples": [
+    {
+      "roman": "puratana devalayalu poramki, chodavaram, yanamalakuduru, gosala, kanuru, tadigadapa, vanukuru gramallo unnayi. shirdisayi mamdiralu i penamaluru niyojakavargalo ekkuvaga nirmitamavutunnayi. yanamalakuduru utsavalu rashtravyaptamga kirti pomdayi. kanurulo tirupatamma tirunallu nirvahastunnaru. kanuru, gamgurulalo puratana masidulunnayi. kanuru, poramki, penamaluru, vanukuru gramallo puratanamaina charchilu unnayi.",
+      "ref": "పురాతన దేవాలయాలు పోరంకి, చోడవరం, యనమలకుదురు, గోసాల, కానూరు, తాడిగడప, వణుకూరు గ్రామాల్లో ఉన్నాయి. షిర్డీసాయి మందిరాలు ఈ పెనమలూరు నియోజకవర్గలో ఎక్కువగా నిర్మితమవుతున్నాయి. యనమలకుదురు ఉత్సవాలు రాష్ట్రవ్యాప్తంగా కీర్తి పొందాయి. కానూరులో తిరుపతమ్మ తిరునాళ్లు నిర్వహస్తున్నారు. కానూరు, గంగూరులలో పురాతన మసీదులున్నాయి. కానూరు, పోరంకి, పెనమలూరు, వణుకూరు గ్రామాల్లో పురాతనమైన చర్చీలు ఉన్నాయి.",
+      "pred": "పురాతన దేవాలయాలు పోరంకి, చోడవరం, యనమలకుదురు, గో",
+      "cer": 0.8773,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "balusu peda sarvarayudu amgleyula numdi 1818lo i jami pomdadu. kapileshvarapuram jamilo aru shivaru lamkalunnayi. pedasarvarayudu mahadata. brahmanulaku, bhattulaku bhumulu, govulu modalagu palu danalu cheshadu. oka pedda tatakam tavvimchadu. 1847 lo peda sarvarayudu chanipoga koduku buchchikrrishnayya palanakochchadu. itadu 1852lo aru gramalu. gala kesanakurru samsthanamnu damtuluri buchchikrrishnaraju numdi koni jami wistarimchadu.",
+      "ref": "బలుసు పెద సర్వారాయుడు ఆంగ్లేయుల నుండి 1818లో ఈ జమీ పొందాడు. కపిలేశ్వరపురం జమీలో ఆరు శివారు లంకలున్నాయి. పెదసర్వారాయుడు మహాదాత. బ్రాహ్మణులకు, భట్టులకు భూములు, గోవులు మొదలగు పలు దానాలు చేశాడు. ఒక పెద్ద తటాకం తవ్వించాడు. 1847 లో పెద సర్వారాయుడు చనిపోగా కొడుకు బుచ్చికృష్ణయ్య పాలనకొచ్చాడు. ఇతడు 1852లో ఆరు గ్రామాలు. గల కేసనకుర్రు సంస్థానంను దంతులూరి బుచ్చికృష్ణరాజు నుండి కొని జమీ విస్తరించాడు.",
+      "pred": "బలుసు పెద సర్వారాయుడు ఆంగ్లేయుల నుండి 1818లో ఈ జా",
+      "cer": 0.8744,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "parishramalu: haidarabadu, parisaralalo anni rakala parishramalu unnayi. ramgareddi jilla tamduru lo, nalgomda jilla miryalaguda pramtamlo simemtu parishramalu adikamga unnayi. mahabub‌nagar jilla kotturulo parishramikavada umdi. medak jilla patan‌cheru pramtam parishramikamga abhivrriddhi chemdimdi. bodhan lo chakkera karmagaram, sirpur‌lo kagitam parishrama, kottagudemlo eruvula parishrama umdi.",
+      "ref": "పరిశ్రమలు: హైదరాబాదు, పరిసరాలలో అన్ని రకాల పరిశ్రమలు ఉన్నాయి. రంగారెడ్డి జిల్లా తాండూరు లో, నల్గొండ జిల్లా మిర్యాలగూడ ప్రాంతంలో సిమెంటు పరిశ్రమలు అధికంగా ఉన్నాయి. మహబూబ్‌నగర్ జిల్లా కొత్తూరులో పారిశ్రామికవాడ ఉంది. మెదక్ జిల్లా పటాన్‌చెరు ప్రాంతం పారిశ్రామికంగా అభివృద్ధి చెందింది. బోధన్ లో చక్కెర కర్మాగారం, సిర్పూర్‌లో కాగితం పరిశ్రమ, కొత్తగూడెంలో ఎరువుల పరిశ్రమ ఉంది.",
+      "pred": "పరిశ్రమలు: హైదరాబాదు, పరిసరాలలో అన్ని రకాల పరిశ",
+      "cer": 0.8726,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "anamtagiri, sumkarimetta rijarvu adavi i arakuloyalo oka bhagam. ichata baksait nikshepalunnayi. amdrapradesh rashtramlo ettaina shikharam galikomda ikkada umdi. dini ettu 5000 adugulu (1500 mitarlu). ichata jun-aktobaru nelala madhya sarasari varshapatam 1,700 mi.mi (67 amgulalu). i pramtam samudramattaniki 1300 ettuna umdi. i loya 36 cha.ki.mi vistarimchi umdi.",
+      "ref": "అనంతగిరి, సుంకరిమెట్ట రిజర్వు అడవి ఈ అరకులోయలో ఒక భాగం. ఇచట బాక్సైట్ నిక్షేపాలున్నాయి. ఆంధ్రప్రదేశ్ రాష్ట్రంలో ఎత్తైన శిఖరం గాలికొండ ఇక్కడ ఉంది. దీని ఎత్తు 5000 అడుగులు (1500 మీటర్లు). ఇచట జూన్-అక్టోబరు నెలల మధ్య సరాసరి వర్షపాతం 1,700 మి.మీ (67 అంగుళాలు). ఈ ప్రాంతం సముద్రమట్టానికి 1300 ఎత్తున ఉంది. ఈ లోయ 36 చ.కి.మీ విస్తరించి ఉంది.",
+      "pred": "అనంతగిరి, సుంకరిమెట్ట రిజర్వు అడవి ఈ అరకులోయలో ",
+      "cer": 0.8589,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "shri ramuni sevalo, samkirtanalo ramadasu tama sheshajivitamunu gadipadu. tyagarajadulaku itanu adyudu, pujyudu. tyagaraju kirtana - \"dhirudau ramadasuni bamdhamu dirchinadi vinnanur rama?\" - imka prahladavijayamulo \"kaliyugamuna vara bhadrachalamuna nelakonna ramachamdruni padabhaktulakella varudanamdagi velasina shriramadasu vinutimtu madin\" - annadu",
+      "ref": "శ్రీ రాముని సేవలో, సంకీర్తనలో రామదాసు తమ శేషజీవితమును గడిపాడు. త్యాగరాజాదులకు ఇతను ఆద్యుడు, పూజ్యుడు. త్యాగరాజు కీర్తన - \"ధీరుడౌ రామదాసుని బంధము దీర్చినది విన్నానురా రామా?\" - ఇంకా ప్రహ్లాదవిజయములో \"కలియుగమున వర భద్రాచలమున నెలకొన్న రామచంద్రుని పాదభక్తులకెల్ల వరుడనందగి వెలసిన శ్రీరామదాసు వినుతింతు మదిన్\" - అన్నాడు",
+      "pred": "శ్రీ రాముని సేవలో, సంకీర్తనలో రామదాసు తమ శేషజీవ",
+      "cer": 0.8498,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "gramaniki samipa pramtala numdi prabhutva ravana samstha bassul tirugutunnayi. samipa gramala numdi ato saukaryam kuda umdi. vyavasayam koraku vademduku gramamlo traktarlunnayi. praivetu bassu saukaryam gramaniki 5 numdi 10 ki.mi. duramlo umdi. railve steshan gramam numdi 10 ki.mi.ki paibadina duramlo umdi.",
+      "ref": "గ్రామానికి సమీప ప్రాంతాల నుండి ప్రభుత్వ రవాణా సంస్థ బస్సులు తిరుగుతున్నాయి. సమీప గ్రామాల నుండి ఆటో సౌకర్యం కూడా ఉంది. వ్యవసాయం కొరకు వాడేందుకు గ్రామంలో ట్రాక్టర్లున్నాయి. ప్రైవేటు బస్సు సౌకర్యం గ్రామానికి 5 నుండి 10 కి.మీ. దూరంలో ఉంది. రైల్వే స్టేషన్ గ్రామం నుండి 10 కి.మీ.కి పైబడిన దూరంలో ఉంది.",
+      "pred": "గ్రామానికి సమీప ప్రాంతాల నుండి ప్రభుత్వ రవాణా ",
+      "cer": 0.8441,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "bemjamin shulj anu matapracharakuni mulamuga kraistava sahityamu jarmani deshamamdu telugulipilo prachurimchabadimdi. braunu dora telugu pustakamula prachuranaku chala krrishicheshadu. 20va shatabdi madyalo telugu golusukattu paddhatilo (amglamuvale) kuda vrayabadimdi. kani adi prachuryamu chemdaledu.",
+      "ref": "బెంజమిన్ షుల్జ్ అను మతప్రచారకుని మూలముగ క్రైస్తవ సాహిత్యము జర్మనీ దేశమందు తెలుగులిపిలో ప్రచురించబడింది. బ్రౌను దొర తెలుగు పుస్తకముల ప్రచురణకు చాల కృషిచేశాడు. 20వ శతాబ్ది మధ్యలో తెలుగు గొలుసుకట్టు పద్ధతిలో (ఆంగ్లమువలె) కూడా వ్రాయబడింది. కాని అది ప్రాచుర్యము చెందలేదు.",
+      "pred": "బెంజమిన్ షుల్జ్ అను మతప్రచారకుని మూలముగా క్రై",
+      "cer": 0.8346,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "atlurulo unna okaprathamika arogya kemdramlo iddaru daktarlu , aruguru paramedikal sibbamdi unnaru. oka prathamika arogya upa kemdramlo daktarlu leru. okaru paramedikal sibbamdi unnaru. oka samchara vaidya shalalo daktarlu leru. mugguru paramedikal sibbamdi unnaru.",
+      "ref": "అట్లూరులో ఉన్న ఒకప్రాథమిక ఆరోగ్య కేంద్రంలో ఇద్దరు డాక్టర్లు , ఆరుగురు పారామెడికల్ సిబ్బందీ ఉన్నారు. ఒక ప్రాథమిక ఆరోగ్య ఉప కేంద్రంలో డాక్టర్లు లేరు. ఒకరు పారామెడికల్ సిబ్బంది ఉన్నారు. ఒక సంచార వైద్య శాలలో డాక్టర్లు లేరు. ముగ్గురు పారామెడికల్ సిబ్బంది ఉన్నారు.",
+      "pred": "అట్లూరులో ఉన్న ఒకప్రాథమిక ఆరోగ్య కేంద్రంలో ఇద",
+      "cer": 0.8256,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "hurun nivedika anusarimchi amerikan dalarla biliyanirlu 2009lo 130 mamdi umdaga 2012 natiki i samkhya 251ki cherukumdi. idi chainanu biliyanirla samkhyaparamga chaina prapamchamlo remdava sthanamlo umdi. 2012lo chaina deshiya riteyil market viluva 20 triliyanla yuyanlu umdi.",
+      "ref": "హురున్ నివేదిక అనుసరించి అమెరికన్ డాలర్ల బిలియనీర్లు 2009లో 130 మంది ఉండగా 2012 నాటికి ఈ సంఖ్య 251కి చేరుకుంది. ఇది చైనాను బిలియనీర్ల సంఖ్యాపరంగా చైనా ప్రపంచంలో రెండవ స్థానంలో ఉంది. 2012లో చైనా దేశీయ రిటెయిల్ మార్కెట్ విలువ 20 ట్రిలియన్ల యుయాన్లు ఉంది.",
+      "pred": "హురూన్ నివేదిక అనుసరించి అమెరికన్ డాలర్ల బిలి",
+      "cer": 0.8254,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "reddigudemlo unna okaprathamika arogya kemdramlo iddaru daktarlu, 10 mamdi paramedikal sibbamdi unnaru. oka prathamika arogya upa kemdramlo daktarlu leru. mugguru paramedikal sibbamdi unnaru. oka pashu vaidyashalalo oka daktaru, okaru paramedikal sibbamdi unnaru.",
+      "ref": "రెడ్డిగూడెంలో ఉన్న ఒకప్రాథమిక ఆరోగ్య కేంద్రంలో ఇద్దరు డాక్టర్లు, 10 మంది పారామెడికల్ సిబ్బందీ ఉన్నారు. ఒక ప్రాథమిక ఆరోగ్య ఉప కేంద్రంలో డాక్టర్లు లేరు. ముగ్గురు పారామెడికల్ సిబ్బంది ఉన్నారు. ఒక పశు వైద్యశాలలో ఒక డాక్టరు, ఒకరు పారామెడికల్ సిబ్బందీ ఉన్నారు.",
+      "pred": "రెడ్డిగూడెంలో ఉన్న ఒకప్రాథమిక ఆరోగ్య కేంద్రంల",
+      "cer": 0.8228,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "1963: lephtinemt valemtina tereshkova tana 26va eta, mottamodati mahila rodasi yatrikuraluga (rodasiloniki vellina 5va vyakti),vostok-6 (rodasi nauka per) lo, rodasiloniki prayanimchimdi. ame 2 rojul 22 gamtala 50 nimishamulalo, bhumi chuttu 49 sarlu tirigi 12,50,000 maillu prayanimchimdi.",
+      "ref": "1963: లెఫ్టినెంట్ వాలెంటీనా తెరెష్కోవా తన 26వ ఏట, మొట్టమొదటి మహిళా రోదసీ యాత్రికురాలుగా (రోదసీలోనికి వెళ్ళిన 5వ వ్యక్తి),వోస్తోక్-6 (రోదసీ నౌక పేరు) లో, రోదసీలోనికి ప్రయాణించింది. ఆమె 2 రోజుల్ 22 గంటల 50 నిమిషములలో, భూమి ఛుట్టూ 49 సార్లు తిరిగి 12,50,000 మైళ్ళూ ప్రయాణించింది.",
+      "pred": "1963: లెఫ్టినెంట్ వాలెంటీనా థెరెష్కోవా తన 26వ ఏట, మొ",
+      "cer": 0.8152,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "i pradesham pallavulu, telugu cholulu, kakatiyulu, vijayanagar rajulu, gamdikota pemmasani nayakulu, nijam navabulu, siddhavatam numchi paripalimchina matli rajulu, kadapa navabulache paripalimcha badimdi. charitralo pramukha kavulu, kavayitrulu, tatvavettalu i jillaku chemdinavare.",
+      "ref": "ఈ ప్రదేశం పల్లవులు, తెలుగు చోళులు, కాకతీయులు, విజయనగర రాజులు, గండికోట పెమ్మసాని నాయకులు, నిజాం నవాబులు, సిద్ధవటం నుంచి పరిపాలించిన మట్లి రాజులు, కడప నవాబులచే పరిపాలించ బడింది. చరిత్రలో ప్రముఖ కవులు, కవయిత్రులు, తత్వవేత్తలు ఈ జిల్లాకు చెందినవారే.",
+      "pred": "ఈ ప్రదేశం పల్లవులు, తెలుగు చోళులు, కాకతీయులు, వి",
+      "cer": 0.8041,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "bamgaru kutumbam dasari narayanaravu darshakatvamlo akkineni nageshvararavu, jayasudha, dasari narayanaravu pradhana patrallo natimchaga nirmimchina 1994 nati telugu chalanachitram. tamila supar star vikram i chitramlo akkineni kumarudiga natimcharu.",
+      "ref": "బంగారు కుటుంబం దాసరి నారాయణరావు దర్శకత్వంలో అక్కినేని నాగేశ్వరరావు, జయసుధ, దాసరి నారాయణరావు ప్రధాన పాత్రల్లో నటించగా నిర్మించిన 1994 నాటి తెలుగు చలనచిత్రం. తమిళ సూపర్ స్టార్ విక్రమ్ ఈ చిత్రంలో అక్కినేని కుమారుడిగా నటించారు.",
+      "pred": "బంగారు కుటుంబం దాసరి నారాయణరావు దర్శకత్వంలో అ",
+      "cer": 0.7982,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "illalu 1997lo vidudalaina telugu sinima. sujana kriyeshans patakanpai shakumatlabayi, vijayachiran lu nirmimchina i sinimaku en.vi.shivaprasad darshakatvam vahimchadu. raj kumar, rashmi taraganamga rupomdina i sinimaku vamdemataram shrinivas samgitannamdimchadu.",
+      "ref": "ఇల్లాలు 1997లో విడుదలైన తెలుగు సినిమా. సుజన క్రియేషన్స్ పతాకంపై శకుంఅత్లాబాయి, విజయచిరణ్ లు నిర్మించిన ఈ సినిమాకు ఎన్.వి.శివప్రసద్ దర్శకత్వం వహించాడు. రాజ్ కుమార్, రశ్మి తారాగణంగా రూపొందిన ఈ సినిమాకు వందేమాతరం శ్రీనివాస్ సంగీతాన్నందించాడు.",
+      "pred": "ఇల్లాలు 1997లో విడుదలైన తెలుగు సినిమా. సుజనా క్రి",
+      "cer": 0.795,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "anamtaramu satrajittu tammudagu prasenudu vilasamuga a manini dharimchi vetakai adaviki vellinadu. adi ataniki nashanahetuvainadi. a manini chuchi mamsakhamdamani bhramimchina simhamokati atadini vemtadi champi manini notakarachukoni poyimdi.",
+      "ref": "అనంతరము సత్రాజిత్తు తమ్ముడగు ప్రసేనుడు విలాసముగా ఆ మణిని ధరించి వేటకై అడవికి వెళ్ళినాడు. అది ఆతనికి నాశనహేతువైనది. ఆ మణిని చూచి మాంసఖండమని భ్రమించిన సింహమొకటి అతడిని వెంటాడి చంపి మణిని నోటకరచుకొని పోయింది.",
+      "pred": "అనంతరము సత్రాజిత్తు తమ్ముడగు ప్రసేనుడు విలాసమ",
+      "cer": 0.7805,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "adavi manushulu 1978lo vidudalaina telugu sinima. pi.es. ar. pikchars patakampai pimjana subbaravu nirmimchina i sinimamu ji.ai.murti darshakatvam chepattadu. prabhakar, lila mukhya taraganam natimchina i sinimaku chellapilla satyam samgitannamdimchadu.",
+      "ref": "అడవి మనుషులు 1978లో విడుదలైన తెలుగు సినిమా. పి.ఎస్. ఆర్. పిక్చర్స్ పతాకంపై పింజన సుబ్బారావు నిర్మించిన ఈ సినిమాము జి.ఐ.మూర్తి దర్శకత్వం చేపట్టాడు. ప్రభాకర్, లీల ముఖ్య తారాగణం నటించిన ఈ సినిమాకు చెళ్లపిళ్ల సత్యం సంగీతాన్నందించాడు.",
+      "pred": "అడవి మనుషులు 1978లో విడుదలైన తెలుగు సినిమా. పి.ఎస్.",
+      "cer": 0.7773,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "gii",
+      "ref": "జీఐఐ",
+      "pred": "గీ",
+      "cer": 0.75,
+      "source": "aksharantar",
+      "pair_source": "direct"
+    },
+    {
+      "roman": "hechaivi/eyids rogullo sidi-4 kaumt 200ku taggagane palu kemdra nadi mamdala vyadhulu chuttumudatayi.haili yaktiv yamti retrovairal terapi (hart) chikitsato vyadhini niyamtrimche avakasham kaligiimdi.",
+      "ref": "హెచ్ఐవీ/ఎయిడ్స్ రోగుల్లో సిడి-4 కౌంట్ 200కు తగ్గగానే పలు కేంద్ర నాడీ మండల వ్యాధులు చుట్టుముడతాయి.హైలీ యాక్టివ్ యాంటీ రెట్రోవైరల్ థెరపీ (హార్ట్) చికిత్సతో వ్యాధిని నియంత్రించే అవకాశం కలిగిఇంది.",
+      "pred": "హెచ్ఐవి/ఎయిడ్స్ రోగుల్లో సిడి-4 కౌంట్ 200కు తగ్గగ",
+      "cer": 0.75,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    },
+    {
+      "roman": "ganeshudi gurimchi vivarimche mukhyamaina gramthalu ganesha puranam, mudgala puranam, ganapati adharvashirsham, brahma puranamu, brahmamda puranam, imka maro remdu pauranika vijnana shastralu mukhyamainavi.",
+      "ref": "గణేశుడి గురించి వివరించే ముఖ్యమైన గ్రంథాలు గణేశ పురాణం, ముద్గల పురాణం, గణపతి అధర్వశీర్షం, బ్రహ్మ పురాణము, బ్రహ్మాండ పురాణం, ఇంకా మరో రెండు పౌరాణిక విజ్ఞాన శాస్త్రాలు ముఖ్యమైనవి.",
+      "pred": "గణేశుడి గురించి వివరించే ముఖ్యమైన గ్రంథాలు గణ",
+      "cer": 0.7458,
+      "source": "wikipedia_te",
+      "pair_source": "synthetic"
+    },
+    {
+      "roman": "shri bh sameta shri vemkateshvarasvamivari devalayamu:- misala vemkannaga bhaktulu aradhimche i alayamlo varshika brahmotsavalu, prati samvatsaram, vaishakha masamlo nirvahimchedaru. [3]",
+      "ref": "శ్రీ భూ సమేత శ్రీ వేంకటేశ్వరస్వామివారి దేవాలయము:- మీసాల వెంకన్నగా భక్తులు ఆరాధించే ఈ ఆలయంలో వార్షిక బ్రహ్మోత్సవాలు, ప్రతి సంవత్సరం, వైశాఖ మాసంలో నిర్వహించెదరు. [3]",
+      "pred": "శ్రీ భూ సమేత శ్రీ వేంకటేశ్వరస్వామివారి దేవాలయ",
+      "cer": 0.7239,
+      "source": "wikipedia_te",
+      "pair_source": "augmented"
+    }
+  ]
+}
