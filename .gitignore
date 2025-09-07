@@ -21,6 +21,7 @@ reports/**/*.json
 reports/**/*.md
 !reports/benchmarks/baseline_report.md
 !reports/benchmarks/baseline_eval.json
+!reports/benchmarks/confusion_report.json
 
 # Model checkpoints — too large for git
 train/checkpoints/
