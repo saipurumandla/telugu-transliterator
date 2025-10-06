@@ -131,8 +131,8 @@ def _build_wikipedia_pairs(records: list[dict], created_at: str) -> list[Transli
             pair_id=str(uuid.uuid4()),
             roman_text=None,
             telugu_text=rec["text_normalized"],
-            source_name="wikipedia_te",
-            license_tag="CC-BY-SA-3.0",
+            source_name=rec.get("source_name", "wikipedia_te"),
+            license_tag=rec.get("license_tag", "CC-BY-SA-3.0"),
             pair_source="wikipedia_pending",
             quality_score=0.0,
             confidence=0.0,
@@ -163,7 +163,8 @@ def build_pairs_from_snapshot(input_path: Path, output_path: Path) -> dict:
         pairs = _build_dakshina_pairs(records, created_at)
     elif source_name == "aksharantar":
         pairs = _build_aksharantar_pairs(records, created_at)
-    elif source_name == "wikipedia_te":
+    elif source_name in ("wikipedia_te", "samanantar"):
+        # Both are Telugu-only sentence sources — pending pairs filled by romanize_rules
         pairs = _build_wikipedia_pairs(records, created_at)
     else:
         print(f"  Unknown source '{source_name}' — skipping.")
