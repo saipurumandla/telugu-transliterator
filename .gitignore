@@ -29,6 +29,7 @@ reports/**/*.md
 # Model checkpoints — too large for git
 train/checkpoints/
 train/checkpoints_v3/
+train/checkpoints_reverse/
 
 # Generated manifest files from data pulls
 data/manifests/*.json

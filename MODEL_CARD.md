@@ -40,13 +40,15 @@ Tenglish is how most Telugu speakers actually type — using Roman letters to wr
 | Input (Tenglish) | Output (Telugu) | Notes |
 |---|---|---|
 | nenu Telugu maatladutaanu | నేను తెలుగు మాట్లాడుతాను | standard sentence |
-| ela unnav bro | ఎలా ఉన్నావ్ bro | English passthrough |
+| ela unnav bro | ఎలా ఉన్నావ్ బ్రో | English loanword transliterated |
 | pakka cheppindi | పక్కా చెప్పింది | Urdu loanword |
-| ikkade unna | ఇక్కడే ఉన్నా | chat shortening |
-| nenu school ki vellanu | నేను స్కూల్ కి వెళ్ళను | mixed formal/colloquial |
+| ikkade unna | ఇక్కడే ఉన్న | chat shortening |
+| nenu school ki vellanu | నేను స్కూల్ కి వెళ్ళాను | mixed formal/colloquial |
 | super ga undi | సూపర్ గా ఉంది | English loanword |
 | em chestunnav | ఏం చేస్తున్నావ్ | casual greeting |
 | konchem wait cheyyi | కొంచెం వెయిట్ చెయ్యి | code-mix |
+| anthey nuvvu cheppindi correct | అంతే నువ్వు చెప్పింది కరెక్ట్ | antey vs anthey disambiguation |
+| sare raa intiki | సరే రా ఇంటికి | doubled vowel (raa→రా) |
 
 ---
 
@@ -67,7 +69,7 @@ print(transliterate("nenu Telugu maatladutaanu"))
 # నేను తెలుగు మాట్లాడుతాను
 
 print(transliterate("ela unnav bro"))
-# ఎలా ఉన్నావ్ bro
+# ఎలా ఉన్నావ్ బ్రో
 
 print(transliterate("pakka cheppindi"))
 # పక్కా చెప్పింది
