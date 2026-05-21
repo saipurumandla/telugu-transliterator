@@ -6,11 +6,11 @@ model:
 data:
   train_file: data/processed_v3/train.jsonl
   val_file:   data/processed_v3/val.jsonl
-  roman_field: roman_text
-  telugu_field: telugu_text
+  input_field:  telugu_text
+  target_field: roman_text
 
 training:
-  output_dir: train/checkpoints_v3
+  output_dir: train/checkpoints_reverse
   seed: 42
   num_train_epochs: 1
   per_device_train_batch_size: 32

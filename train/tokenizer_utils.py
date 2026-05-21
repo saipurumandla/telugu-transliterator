@@ -13,19 +13,23 @@ class TranslitDataset(Dataset):
         tokenizer: AutoTokenizer,
         max_input_length: int = 128,
         max_target_length: int = 128,
+        input_field: str = "roman_text",
+        target_field: str = "telugu_text",
     ) -> None:
         self.pairs = pairs
         self.tokenizer = tokenizer
         self.max_input_length = max_input_length
         self.max_target_length = max_target_length
+        self.input_field = input_field
+        self.target_field = target_field
 
     def __len__(self) -> int:
         return len(self.pairs)
 
     def __getitem__(self, idx: int) -> dict:
         pair = self.pairs[idx]
-        roman = pair.get("roman_text") or ""
-        telugu = pair.get("telugu_text") or ""
+        roman = pair.get(self.input_field) or ""
+        telugu = pair.get(self.target_field) or ""
 
         model_inputs = self.tokenizer(
             roman,

@@ -54,7 +54,15 @@ def compute_cer(pred_texts: list[str], label_texts: list[str]) -> float:
     return total_errors / max(total_chars, 1)
 
 
-def train(config_path: str = "train/config.yaml") -> None:
+def _eval_strategy_kwarg(train_cfg: dict) -> dict:
+    import inspect
+    value = train_cfg.get("eval_strategy") or train_cfg.get("evaluation_strategy", "epoch")
+    params = inspect.signature(Seq2SeqTrainingArguments.__init__).parameters
+    key = "eval_strategy" if "eval_strategy" in params else "evaluation_strategy"
+    return {key: value}
+
+
+def train(config_path: str = "train/config.yaml", resume_from_checkpoint: str | None = None) -> None:
     cfg = load_config(config_path)
     model_cfg = cfg["model"]
     data_cfg = cfg["data"]
@@ -80,15 +88,23 @@ def train(config_path: str = "train/config.yaml") -> None:
     val_pairs = load_jsonl(data_cfg["val_file"])
     print(f"  train: {len(train_pairs):,}  val: {len(val_pairs):,}")
 
+    input_field = data_cfg.get("input_field", "roman_text")
+    target_field = data_cfg.get("target_field", "telugu_text")
+    print(f"Direction: {input_field} → {target_field}")
+
     train_dataset = TranslitDataset(
         train_pairs, tokenizer,
         model_cfg["max_input_length"],
         model_cfg["max_target_length"],
+        input_field=input_field,
+        target_field=target_field,
     )
     val_dataset = TranslitDataset(
         val_pairs, tokenizer,
         model_cfg["max_input_length"],
         model_cfg["max_target_length"],
+        input_field=input_field,
+        target_field=target_field,
     )
 
     print(f"Loading model: {model_cfg['name']}")
@@ -114,7 +130,7 @@ def train(config_path: str = "train/config.yaml") -> None:
         fp16=use_fp16,
         bf16=use_bf16,
         max_grad_norm=train_cfg.get("max_grad_norm", 1.0),
-        evaluation_strategy=train_cfg["evaluation_strategy"],
+        **_eval_strategy_kwarg(train_cfg),
         eval_steps=train_cfg.get("eval_steps"),
         save_strategy=train_cfg.get("save_strategy", "epoch"),
         save_steps=train_cfg.get("save_steps"),
@@ -134,13 +150,25 @@ def train(config_path: str = "train/config.yaml") -> None:
 
     def compute_metrics(eval_pred):
         predictions, labels = eval_pred
+        total = len(predictions)
+        # Subsample before decode — full val set (150k+) causes multi-hour CPU hang
+        # 5k examples gives a reliable CER estimate (std error < 0.2%)
+        if total > 5000:
+            rng = np.random.default_rng(42)
+            idx = rng.choice(total, 5000, replace=False)
+            predictions, labels = predictions[idx], labels[idx]
+        print(f"[compute_metrics] total={total}  evaluating={len(predictions)}")
         # ByT5 can generate token IDs outside valid range — clip to actual vocab size
         # vocab_size returns 256 but len(tokenizer)=384 is the true upper bound
         predictions = np.clip(predictions, 0, len(tokenizer) - 1)
+        print("[compute_metrics] decoding predictions ...")
         decoded_preds = tokenizer.batch_decode(predictions, skip_special_tokens=True)
+        print("[compute_metrics] decoding labels ...")
         labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
+        print("[compute_metrics] computing CER ...")
         cer = compute_cer(decoded_preds, decoded_labels)
+        print(f"[compute_metrics] done  CER={cer:.4f}")
         return {"cer": round(cer, 4)}
 
     trainer = Seq2SeqTrainer(
@@ -156,15 +184,31 @@ def train(config_path: str = "train/config.yaml") -> None:
     print(f"Starting training — bf16={use_bf16}  effective_batch={train_cfg['per_device_train_batch_size'] * max(num_gpus,1)}")
     best_dir = Path(output_dir) / "best"
     try:
-        trainer.train()
+        trainer.train(resume_from_checkpoint=resume_from_checkpoint)
     except Exception as e:
         print(f"Training ended with: {e}")
     finally:
-        trainer.save_model(str(best_dir))
-        tokenizer.save_pretrained(str(best_dir))
-        print(f"Model saved to {best_dir}")
+        print("[save] training loop exited — starting save ...")
+        # Sync all DDP ranks before saving, then destroy the process group so
+        # save_pretrained() runs without any distributed collective ops.
+        if torch.distributed.is_initialized():
+            print("[save] DDP barrier ...")
+            torch.distributed.barrier()
+            print("[save] destroying process group ...")
+            torch.distributed.destroy_process_group()
+        if trainer.is_world_process_zero():
+            print(f"[save] rank 0 — saving model to {best_dir} ...")
+            # Unwrap DDP wrapper to get the raw model — avoids any residual sync calls
+            raw_model = trainer.model.module if hasattr(trainer.model, "module") else trainer.model
+            best_dir.mkdir(parents=True, exist_ok=True)
+            raw_model.save_pretrained(str(best_dir))
+            print("[save] model weights written")
+            tokenizer.save_pretrained(str(best_dir))
+            print(f"[save] tokenizer written")
+            print(f"Model saved to {best_dir}")
 
 
 if __name__ == "__main__":
     config_path = sys.argv[1] if len(sys.argv) > 1 else "train/config.yaml"
-    train(config_path)
+    resume_checkpoint = sys.argv[2] if len(sys.argv) > 2 else None
+    train(config_path, resume_from_checkpoint=resume_checkpoint)
