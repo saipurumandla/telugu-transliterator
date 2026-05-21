@@ -1,0 +1,4 @@
+gradio>=4.0
+transformers>=4.40
+torch --index-url https://download.pytorch.org/whl/cpu
+sentencepiece>=0.1.99

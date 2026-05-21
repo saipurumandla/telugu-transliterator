@@ -143,6 +143,44 @@ def _build_wikipedia_pairs(records: list[dict], created_at: str) -> list[Transli
     return pairs
 
 
+def _build_synthetic_pairs(records: list[dict], created_at: str) -> list[TranslitPair]:
+    # Synthetic records come in roman+telugu pairs linked by shared UUID in source_doc_id
+    # roman: syn_{cat}_{uuid}_ro  telugu: syn_{cat}_{uuid}_te
+    by_uuid: dict[str, dict] = {}
+    for rec in records:
+        doc_id = rec.get("source_doc_id", "")
+        if doc_id.endswith("_ro"):
+            key = doc_id[:-3]
+            by_uuid.setdefault(key, {})["roman"] = rec
+        elif doc_id.endswith("_te"):
+            key = doc_id[:-3]
+            by_uuid.setdefault(key, {})["telugu"] = rec
+
+    pairs = []
+    for key, group in by_uuid.items():
+        roman_rec = group.get("roman")
+        telugu_rec = group.get("telugu")
+        if not roman_rec or not telugu_rec:
+            continue
+        roman_text = roman_rec["text_normalized"]
+        telugu_text = telugu_rec["text_normalized"]
+        ok_ratio = _length_ratio_ok(roman_text, telugu_text)
+        pairs.append(TranslitPair(
+            pair_id=str(uuid.uuid4()),
+            roman_text=roman_text,
+            telugu_text=telugu_text,
+            source_name="ollama_synthetic",
+            license_tag="internal",
+            pair_source="synthetic",
+            quality_score=0.80,
+            confidence=0.80,
+            review_status="approved" if ok_ratio else "review",
+            created_at=created_at,
+            augmentation_variant=None,
+        ))
+    return pairs
+
+
 def build_pairs_from_snapshot(input_path: Path, output_path: Path) -> dict:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     created_at = datetime.now(tz=timezone.utc).isoformat()
@@ -164,8 +202,9 @@ def build_pairs_from_snapshot(input_path: Path, output_path: Path) -> dict:
     elif source_name == "aksharantar":
         pairs = _build_aksharantar_pairs(records, created_at)
     elif source_name in ("wikipedia_te", "samanantar"):
-        # Both are Telugu-only sentence sources — pending pairs filled by romanize_rules
         pairs = _build_wikipedia_pairs(records, created_at)
+    elif source_name == "ollama_synthetic":
+        pairs = _build_synthetic_pairs(records, created_at)
     else:
         print(f"  Unknown source '{source_name}' — skipping.")
         return {"input_file": str(input_path), "pair_count": 0}

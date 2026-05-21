@@ -1,0 +1,26 @@
+{
+  "overall": {
+    "count": 10000,
+    "cer": 0.0708,
+    "wer": 0.3214,
+    "exact_match": 0.7079
+  },
+  "formal": {
+    "count": 71,
+    "cer": 0.0325,
+    "wer": 0.169,
+    "exact_match": 0.831
+  },
+  "colloquial": {
+    "count": 3656,
+    "cer": 0.0309,
+    "wer": 0.1849,
+    "exact_match": 0.8151
+  },
+  "long_sentence": {
+    "count": 206,
+    "cer": 0.1621,
+    "wer": 0.3036,
+    "exact_match": 0.3544
+  }
+}

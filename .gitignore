@@ -15,6 +15,7 @@ data/interim/*
 !data/interim/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+data/processed_v3/
 
 # Generated reports — intermediate only; committed reports are tracked explicitly
 reports/**/*.json
@@ -22,9 +23,12 @@ reports/**/*.md
 !reports/benchmarks/baseline_report.md
 !reports/benchmarks/baseline_eval.json
 !reports/benchmarks/confusion_report.json
+!reports/benchmarks/v3_benchmark_report.md
+!reports/benchmarks/eval_results.json
 
 # Model checkpoints — too large for git
 train/checkpoints/
+train/checkpoints_v3/
 
 # Generated manifest files from data pulls
 data/manifests/*.json

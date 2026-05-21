@@ -1,4 +1,4 @@
-# tenglish-to-telugu
+# telugu-transliterator
 
 Data ingestion pipeline for converting Romanized Telugu (Tenglish) to Telugu script.
 

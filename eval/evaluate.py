@@ -114,7 +114,7 @@ def evaluate_model(
             outputs = model.generate(
                 **inputs,
                 max_length=max_length,
-                num_beams=2,
+                num_beams=1,
             )
         return tokenizer.batch_decode(outputs, skip_special_tokens=True)
 
