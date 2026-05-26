@@ -1,0 +1,34 @@
+model:
+  name: train/checkpoints/best
+  max_input_length: 128
+  max_target_length: 128
+
+data:
+  train_file: data/processed_v4/train.jsonl
+  val_file:   data/processed_v4/val.jsonl
+  input_field:  roman_text
+  target_field: telugu_text
+
+training:
+  output_dir: train/checkpoints_v4
+  seed: 42
+  num_train_epochs: 1
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 32
+  learning_rate: 1.0e-5
+  warmup_steps: 200
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: false
+  max_grad_norm: 1.0
+  eval_strategy: epoch
+  save_strategy: steps
+  save_steps: 10000
+  save_total_limit: 2
+  load_best_model_at_end: false
+  logging_steps: 200
+  dataloader_num_workers: 0
+  gradient_accumulation_steps: 1
+  predict_with_generate: true
+  generation_max_length: 128
