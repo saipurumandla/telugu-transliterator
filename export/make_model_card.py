@@ -1,4 +1,4 @@
-"""Generate MODEL_CARD.md from eval results and training config."""
+﻿"""Generate MODEL_CARD.md from eval results and training config."""
 
 import json
 import yaml
@@ -26,8 +26,8 @@ Fine-tuned from [google/byt5-small](https://huggingface.co/google/byt5-small).
 ```python
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/telugu-transliterator")
-model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/telugu-transliterator")
+tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/tenglish-to-telugu")
+model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/tenglish-to-telugu")
 
 def transliterate(text):
     inputs = tokenizer(text, return_tensors="pt", max_length=128, truncation=True)
@@ -78,7 +78,7 @@ Evaluated with greedy decoding (num_beams=1), max_length=128.
   title={{TeluguTransliterator: Local Transliteration for Colloquial Romanized Telugu}},
   author={{Purumandla, Sai}},
   year={{2026}},
-  url={{https://huggingface.co/harinpurumandla/telugu-transliterator}}
+  url={{https://huggingface.co/harinpurumandla/tenglish-to-telugu}}
 }}
 ```
 """

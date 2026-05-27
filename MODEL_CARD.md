@@ -1,4 +1,4 @@
----
+﻿---
 language: te
 tags:
   - transliteration
@@ -25,7 +25,7 @@ Converts colloquial Romanized Telugu (Tenglish) to Telugu Unicode script — han
 
 Fine-tuned from [google/byt5-small](https://huggingface.co/google/byt5-small) on 6.1M transliteration pairs.
 
-**[Try the live demo →](https://huggingface.co/spaces/harinpurumandla/telugu-transliterator)**
+**[Try the live demo →](https://huggingface.co/spaces/harinpurumandla/tenglish-to-telugu)**
 
 ---
 
@@ -57,8 +57,8 @@ Tenglish is how most Telugu speakers actually type — using Roman letters to wr
 ```python
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/telugu-transliterator")
-model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/telugu-transliterator")
+tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/tenglish-to-telugu")
+model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/tenglish-to-telugu")
 
 def transliterate(text):
     inputs = tokenizer(text, return_tensors="pt", max_length=128, truncation=True)
@@ -174,6 +174,6 @@ Full dataset: [harinpurumandla/telugu-transliterator-dataset](https://huggingfac
   title={TeluguTransliterator: Local Transliteration for Colloquial Romanized Telugu},
   author={Purumandla, Sai Harin Kumar Reddy},
   year={2026},
-  url={https://huggingface.co/harinpurumandla/telugu-transliterator}
+  url={https://huggingface.co/harinpurumandla/tenglish-to-telugu}
 }
 ```

@@ -1,4 +1,4 @@
-"""Push trained model and tokenizer to HuggingFace Hub."""
+﻿"""Push trained model and tokenizer to HuggingFace Hub."""
 
 import argparse
 import sys
@@ -8,7 +8,7 @@ from huggingface_hub import HfApi
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 
-REPO_ID = "harinpurumandla/telugu-transliterator"
+REPO_ID = "harinpurumandla/tenglish-to-telugu"
 DATASET_REPO_ID = "harinpurumandla/telugu-transliterator-dataset"
 
 

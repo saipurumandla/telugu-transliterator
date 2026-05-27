@@ -1,4 +1,4 @@
-# Community Posts — TeluguTransliterator
+﻿# Community Posts — TeluguTransliterator
 
 Draft posts for sharing the model. Adapt tone per platform.
 
@@ -25,9 +25,9 @@ Standard transliteration tools are built for clean, formal input. They fall apar
 
 **Known limitation:** Long sentences (>40 words) hit ByT5's byte window limit — CER jumps to ~16% there.
 
-Model: https://huggingface.co/harinpurumandla/telugu-transliterator
+Model: https://huggingface.co/harinpurumandla/tenglish-to-telugu
 Dataset: https://huggingface.co/datasets/harinpurumandla/telugu-transliterator-dataset
-Demo: https://huggingface.co/spaces/harinpurumandla/telugu-transliterator
+Demo: https://huggingface.co/spaces/harinpurumandla/tenglish-to-telugu
 
 Happy to discuss the data pipeline, training setup, or evaluation methodology. CER/WER numbers, confusion analysis, and the full benchmark report are in the model card.
 
@@ -47,7 +47,7 @@ I spent about a year building a model that converts this to actual Telugu script
 
 It handles the usual casual typing including Urdu words we use (pakka, bilkul, super) and English words that we just leave in English.
 
-Try it here: https://huggingface.co/spaces/harinpurumandla/telugu-transliterator
+Try it here: https://huggingface.co/spaces/harinpurumandla/tenglish-to-telugu
 
 It's not perfect — long sentences can trip it up — but it works well for the kind of texts we actually send each other.
 
@@ -69,7 +69,7 @@ Handles chat-style spelling, code-mix English, Urdu loanwords — the way Telugu
 CER: 3.09% on colloquial text
 
 Model + demo 👇
-https://huggingface.co/harinpurumandla/telugu-transliterator
+https://huggingface.co/harinpurumandla/tenglish-to-telugu
 
 #TeluguNLP #indicnlp #NLP #transliteration #Telugu
 
@@ -121,7 +121,7 @@ Most transliteration models are trained on clean, formal text. Tenglish is messi
 - Apache-2.0 license
 
 **Dataset:** harinpurumandla/telugu-transliterator-dataset (full provenance, license tracking per pair)
-**Demo Space:** harinpurumandla/telugu-transliterator
+**Demo Space:** harinpurumandla/tenglish-to-telugu
 
 Feedback very welcome — especially from native Telugu speakers who can judge output quality on regional or dialectal variation.
 
@@ -136,7 +136,7 @@ Tenglish is how most Telugu speakers type on social media: mixing spellings, Eng
 Architecture: ByT5-small (byte-level, no tokenizer vocabulary problems for Telugu script)
 CER: 3.09% colloquial, 7.08% overall
 
-Model: https://huggingface.co/harinpurumandla/telugu-transliterator
+Model: https://huggingface.co/harinpurumandla/tenglish-to-telugu
 Dataset: https://huggingface.co/datasets/harinpurumandla/telugu-transliterator-dataset
 
 #indicnlp #Telugu #NLP #transliteration #lowresource
