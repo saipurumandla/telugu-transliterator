@@ -1,4 +1,4 @@
----
+﻿---
 language: te
 tags:
   - transliteration
@@ -46,8 +46,8 @@ Fine-tuned from [google/byt5-small](https://huggingface.co/google/byt5-small) on
 ```python
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/telugu-transliterator")
-model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/telugu-transliterator")
+tokenizer = AutoTokenizer.from_pretrained("harinpurumandla/tenglish-to-telugu")
+model = AutoModelForSeq2SeqLM.from_pretrained("harinpurumandla/tenglish-to-telugu")
 
 def to_telugu(text):
     inputs = tokenizer(text, return_tensors="pt", max_length=128, truncation=True)
@@ -155,6 +155,6 @@ For the reverse direction (Telugu script → Tenglish), see [harinpurumandla/tel
   title={Telugu Transliterator: Tenglish to Telugu Unicode Transliteration},
   author={Purumandla, Sai Harin Kumar Reddy},
   year={2026},
-  url={https://huggingface.co/harinpurumandla/telugu-transliterator}
+  url={https://huggingface.co/harinpurumandla/tenglish-to-telugu}
 }
 ```

@@ -1,4 +1,4 @@
----
+﻿---
 language: te
 tags:
   - transliteration
@@ -20,7 +20,7 @@ metrics:
 
 # Telugu to Tenglish Transliterator v1.1
 
-Converts Telugu Unicode script to colloquial Romanized Telugu (Tenglish) — the reverse direction of [harinpurumandla/telugu-transliterator](https://huggingface.co/harinpurumandla/telugu-transliterator).
+Converts Telugu Unicode script to colloquial Romanized Telugu (Tenglish) — the reverse direction of [harinpurumandla/tenglish-to-telugu](https://huggingface.co/harinpurumandla/tenglish-to-telugu).
 
 Fine-tuned from [google/byt5-small](https://huggingface.co/google/byt5-small) on 5.6M transliteration pairs including 6,364 targeted synthetic pairs covering colloquial confusion patterns.
 
@@ -109,7 +109,7 @@ The forward model (Tenglish → Telugu) achieves 1.89% CER because Telugu Unicod
 
 ## Companion Model
 
-For the forward direction (Tenglish → Telugu script), see [harinpurumandla/telugu-transliterator](https://huggingface.co/harinpurumandla/telugu-transliterator).
+For the forward direction (Tenglish → Telugu script), see [harinpurumandla/tenglish-to-telugu](https://huggingface.co/harinpurumandla/tenglish-to-telugu).
 
 ---
 

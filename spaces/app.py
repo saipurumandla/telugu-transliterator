@@ -1,4 +1,4 @@
-"""Gradio demo for Telugu transliteration — both directions."""
+﻿"""Gradio demo for Telugu transliteration — both directions."""
 
 import re as _re
 
@@ -6,7 +6,7 @@ import gradio as gr
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-FORWARD_MODEL_ID = "harinpurumandla/telugu-transliterator"
+FORWARD_MODEL_ID = "harinpurumandla/tenglish-to-telugu"
 REVERSE_MODEL_ID = "harinpurumandla/telugu-to-tenglish"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -192,7 +192,7 @@ romanized multiple ways. This model outputs one common convention learned from t
     gr.Markdown(
         """
 ---
-Models: [telugu-transliterator](https://huggingface.co/harinpurumandla/telugu-transliterator) (1.89% CER) ·
+Models: [tenglish-to-telugu](https://huggingface.co/harinpurumandla/tenglish-to-telugu) (1.89% CER) ·
 [telugu-to-tenglish](https://huggingface.co/harinpurumandla/telugu-to-tenglish) (16.69% CER)
         """
     )
