@@ -30,6 +30,8 @@ reports/**/*.md
 train/checkpoints/
 train/checkpoints_v3/
 train/checkpoints_reverse/
+train/checkpoints_v4/
+train/checkpoints_v4_reverse/
 
 # Generated manifest files from data pulls
 data/manifests/*.json
