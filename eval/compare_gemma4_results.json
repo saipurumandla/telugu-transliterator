@@ -1,0 +1,408 @@
+{
+  "byt5_cer": 0.027,
+  "gemma4_cer": 0.0848,
+  "samples": 50,
+  "gemma4_valid": 46,
+  "examples": [
+    {
+      "roman": "manobavalu",
+      "ref": "మనోబావాలు",
+      "byt5": "మనోబావాలు",
+      "gemma4": "మనోభావాలు",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1111
+    },
+    {
+      "roman": "bhedhamunu",
+      "ref": "భేధమును",
+      "byt5": "భేధమును",
+      "gemma4": "భేధమును",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "kalaruupaallo",
+      "ref": "కళారూపాల్లో",
+      "byt5": "కళారూపాల్లో",
+      "gemma4": "కళ రూపాల్లో",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0909
+    },
+    {
+      "roman": "waadaalanukone",
+      "ref": "వాడాలనుకొనే",
+      "byt5": "వాడాలనుకొనే",
+      "gemma4": "వాడాలనుకునే",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0909
+    },
+    {
+      "roman": "paradaesiyudi",
+      "ref": "పరదేశీయుడి",
+      "byt5": "పరదేశీయుడి",
+      "gemma4": "పరదేశియుడి",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1
+    },
+    {
+      "roman": "vismaristuntam",
+      "ref": "విస్మరిస్తుంటాం",
+      "byt5": "విస్మరిస్తుంటాం",
+      "gemma4": "విస్మరిస్తుంటాం",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "challabarichedi",
+      "ref": "చల్లబరిచేది",
+      "byt5": "చల్లబరిచేది",
+      "gemma4": "చల్లబరిచేది",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "marchutunnaamannaaru",
+      "ref": "మార్చుతున్నామన్నారు",
+      "byt5": "మార్చుతున్నామన్నారు",
+      "gemma4": "మార్చుతున్నామన్నారు",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "alayaniki wachche annidarulanu musiveyimcharu.",
+      "ref": "ఆలయానికి వచ్చే అన్నిదారులను మూసివేయించారు.",
+      "byt5": "ఆలయానికి వచ్చే అన్నిదారులను మూసివేయించారు.",
+      "gemma4": "ఆలయానికి వచ్చే అందరినీ ముసివేయించారు.",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.2143
+    },
+    {
+      "roman": "nilasaraswati",
+      "ref": "నీలసరస్వతి",
+      "byt5": "నీలసరస్వతి",
+      "gemma4": "నీలసరస్వతి",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "balaniropanhatho",
+      "ref": "బలనిరూపణతో",
+      "byt5": "బలనిరూపణతో",
+      "gemma4": "బలనిరోపణతో",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1
+    },
+    {
+      "roman": "velluntundi",
+      "ref": "వెళ్లుంటుంది",
+      "byt5": "వెళ్లుంటుంది",
+      "gemma4": "వెళ్ళుంటుంది",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0833
+    },
+    {
+      "roman": "aasistonna",
+      "ref": "ఆశిస్తోన్న",
+      "byt5": "ఆశిస్తోన్న",
+      "gemma4": "ఆసిస్తున్నా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.3
+    },
+    {
+      "roman": "samaajasanbandha",
+      "ref": "సమాజసంబంధ",
+      "byt5": "సమాజసంబంధ",
+      "gemma4": "సమాజ సంబంధ",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1111
+    },
+    {
+      "roman": "ramaraon",
+      "ref": "రామరావును",
+      "byt5": "రామారావును",
+      "gemma4": null,
+      "byt5_cer": 0.1111,
+      "gemma4_cer": null
+    },
+    {
+      "roman": "chitrakaristunnarata",
+      "ref": "చిత్రకరిస్తున్నారట",
+      "byt5": "చిత్రకరిస్తున్నారట",
+      "gemma4": "చిత్రకరిస్తున్నారట",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "parvataalugaa",
+      "ref": "పర్వతాలుగా",
+      "byt5": "పర్వతాలుగా",
+      "gemma4": "పర్వతాలుగా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "juvvaladhinne",
+      "ref": "జువ్వలదిన్నె",
+      "byt5": "జువ్వలదిన్నె",
+      "gemma4": "జువ్వలదిన్నే",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0833
+    },
+    {
+      "roman": "ippimchaali",
+      "ref": "ఇప్పించాలి",
+      "byt5": "ఇప్పించాలి",
+      "gemma4": "ఇప్పించాలి",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "murugulone",
+      "ref": "మురుగులోనే",
+      "byt5": "మురుగులోనే",
+      "gemma4": "మురుగులోనే",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "kalushitamai",
+      "ref": "కళుషితమై",
+      "byt5": "కలుషితమై",
+      "gemma4": "కలుషితమై",
+      "byt5_cer": 0.125,
+      "gemma4_cer": 0.125
+    },
+    {
+      "roman": "wasalane",
+      "ref": "వాసాలనే",
+      "byt5": "వాసాలనే",
+      "gemma4": "వసలనే",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.2857
+    },
+    {
+      "roman": "muraliinadamloo",
+      "ref": "మురళీనాదంలో",
+      "byt5": "మురళీనాదంలో",
+      "gemma4": "మురళీనదంలో",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0909
+    },
+    {
+      "roman": "valu batiki battakattimdi, lemdi ayina naku teliyadu.",
+      "ref": "వాళ్లు బతికి బట్టకట్టిందీ, లేందీ అయినా నాకు తెలియదు.",
+      "byt5": "వాళ్లు బతికి బట్టకట్టింది, లెండీ అయినా నాకు తెల",
+      "gemma4": null,
+      "byt5_cer": 0.1538,
+      "gemma4_cer": null
+    },
+    {
+      "roman": "vedaledane",
+      "ref": "వీడలేదనే",
+      "byt5": "వీడలేదనే",
+      "gemma4": "వేడలేదనే",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.125
+    },
+    {
+      "roman": "gudebellurlo bhu winiyogam kimdi vidhamga umdi:",
+      "ref": "గుడెబెల్లూర్లో భూ వినియోగం కింది విధంగా ఉంది:",
+      "byt5": "గూడెబెల్లూర్లో భూ వినియోగం కింది విధంగా ఉంది:",
+      "gemma4": "గుడెబెల్లూరులో భూ వినియోగం కింద విధంగా ఉంది:",
+      "byt5_cer": 0.0222,
+      "gemma4_cer": 0.0444
+    },
+    {
+      "roman": "monetarial",
+      "ref": "మానిటోరియల్",
+      "byt5": "మానిటేరియల్",
+      "gemma4": "మోనెటరియల్",
+      "byt5_cer": 0.0909,
+      "gemma4_cer": 0.2727
+    },
+    {
+      "roman": "janahar lal nehru amtarjatiya puraskaram: madar terisa",
+      "ref": "జనహార్ లాల్ నెహ్రూ అంతర్జాతీయ పురస్కారం: మదర్ థెరీసా",
+      "byt5": "జనహార్ లాల్ నెహ్రూ అంతర్జాతీయ పురస్కారం: మదర్ థ",
+      "gemma4": "జవహర్ లాల్ నెహ్రూ అంతర్జాతీయ పురస్కారం: మదర్ తెరిసా",
+      "byt5_cer": 0.0962,
+      "gemma4_cer": 0.0769
+    },
+    {
+      "roman": "pattukoneeyakunda",
+      "ref": "పట్టుకోనీయకుండా",
+      "byt5": "పట్టుకోనీయకుండా",
+      "gemma4": "పట్టుకోనీయకుండా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "ranmanakapoyina",
+      "ref": "రమ్మనకపోయినా",
+      "byt5": "రమ్మనకపోయినా",
+      "gemma4": "రానమనకపోయినా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1667
+    },
+    {
+      "roman": "abedyamgaa",
+      "ref": "అబేధ్యంగా",
+      "byt5": "అబేధ్యంగా",
+      "gemma4": "అభేద్యంగా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.2222
+    },
+    {
+      "roman": "chupiyaru",
+      "ref": "చుపియారు",
+      "byt5": "చుపియారు",
+      "gemma4": "చూపించారు",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.375
+    },
+    {
+      "roman": "paandityaprakarshan",
+      "ref": "పాండిత్యప్రకర్షను",
+      "byt5": "పాండిత్యప్రకర్షను",
+      "gemma4": "పాండిత్యప్రకర్షణ",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1176
+    },
+    {
+      "roman": "niluchona",
+      "ref": "నిలుచొన",
+      "byt5": "నిలుచొన",
+      "gemma4": "నిలుచోనా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.2857
+    },
+    {
+      "roman": "upanagaraniki",
+      "ref": "ఉపనగరానికి",
+      "byt5": "ఉపనగరానికి",
+      "gemma4": "ఉపనగరానికి",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "adugupedatara",
+      "ref": "అడుగుపెడతారా",
+      "byt5": "అడుగుపెడతారా",
+      "gemma4": "అడుగుపెడతారా",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "samaachaaraannimaarchi",
+      "ref": "సమాచారాన్నిమార్చి",
+      "byt5": "సమాచారాన్నిమార్చి",
+      "gemma4": "సమాచారాన్ని మార్చి",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0588
+    },
+    {
+      "roman": "utsavalameeda",
+      "ref": "ఉత్సవాలమీద",
+      "byt5": "ఉత్సవాలమీద",
+      "gemma4": "ఉత్సవాల మీద",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1
+    },
+    {
+      "roman": "mahabobabad",
+      "ref": "మహబూబాబాద్",
+      "byt5": "మహబూబాబాద్",
+      "gemma4": "మహబూబాబాద్",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "tudichiveyabaden",
+      "ref": "తుడిచివేయబడెను",
+      "byt5": "తుడిచివేయబడెను",
+      "gemma4": "తుడిచివేయబడిన",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.1429
+    },
+    {
+      "roman": "kumaartaku",
+      "ref": "కుమార్తకు",
+      "byt5": "కుమార్తకు",
+      "gemma4": "కుమార్తకు",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "pariseelinchukontu",
+      "ref": "పరిశీలించుకొంటూ",
+      "byt5": "పరిశీలించుకొంటూ",
+      "gemma4": "పరిశీలించుకొంటూ",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "mulakathaloni",
+      "ref": "మూలకథలోని",
+      "byt5": "మూలకథలోని",
+      "gemma4": "మూలకథలోని",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0
+    },
+    {
+      "roman": "vargeekaranalu",
+      "ref": "వర్గీకరణాలు",
+      "byt5": "వర్గీకరణలు",
+      "gemma4": "వర్గీకరణలు",
+      "byt5_cer": 0.0909,
+      "gemma4_cer": 0.0909
+    },
+    {
+      "roman": "waadevaallapai",
+      "ref": "వాడేవాళ్లపై",
+      "byt5": "వాడేవాళ్లపై",
+      "gemma4": null,
+      "byt5_cer": 0.0,
+      "gemma4_cer": null
+    },
+    {
+      "roman": "tesukuraledu",
+      "ref": "తీసుకురలేదు",
+      "byt5": "తీసుకురాలేదు",
+      "gemma4": "తీసుకోలేదు",
+      "byt5_cer": 0.0909,
+      "gemma4_cer": 0.1818
+    },
+    {
+      "roman": "ukkiribikkirikaga",
+      "ref": "ఉక్కిరిబిక్కిరికాగా",
+      "byt5": "ఉక్కిరిబిక్కిరికగా",
+      "gemma4": "ఉక్కిరిబిక్కిరికగా",
+      "byt5_cer": 0.0526,
+      "gemma4_cer": 0.0526
+    },
+    {
+      "roman": "upanyaaln",
+      "ref": "ఉపన్యాల్ను",
+      "byt5": "ఉపన్యాల్ను",
+      "gemma4": null,
+      "byt5_cer": 0.0,
+      "gemma4_cer": null
+    },
+    {
+      "roman": "raj‌kumar‌ hirani darshakatvam vahistunnar.",
+      "ref": "రాజ్‌కుమార్‌ హిరాణీ దర్శకత్వం వహిస్తున్నారు.",
+      "byt5": "రాజ్‌కుమార్‌ హిరాణీ దర్శకత్వం వహిస్తున్నారు.",
+      "gemma4": "రాజ్‌కుమార్ హిరణీ దర్శకత్వం వహిస్తున్నారు.",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0455
+    },
+    {
+      "roman": "udyamakaarudaayana",
+      "ref": "ఉద్యమకారుడాయన",
+      "byt5": "ఉద్యమకారుడాయన",
+      "gemma4": "ఉద్యమకారుదాయన",
+      "byt5_cer": 0.0,
+      "gemma4_cer": 0.0769
+    }
+  ]
+}
