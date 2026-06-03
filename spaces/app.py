@@ -192,8 +192,8 @@ romanized multiple ways. This model outputs one common convention learned from t
     gr.Markdown(
         """
 ---
-Models: [tenglish-to-telugu](https://huggingface.co/harinpurumandla/tenglish-to-telugu) (1.89% CER) ·
-[telugu-to-tenglish](https://huggingface.co/harinpurumandla/telugu-to-tenglish) (16.69% CER)
+Models: <a href="https://huggingface.co/harinpurumandla/tenglish-to-telugu" target="_blank">tenglish-to-telugu</a> (1.89% CER) ·
+<a href="https://huggingface.co/harinpurumandla/telugu-to-tenglish" target="_blank">telugu-to-tenglish</a> (16.69% CER)
         """
     )
 
